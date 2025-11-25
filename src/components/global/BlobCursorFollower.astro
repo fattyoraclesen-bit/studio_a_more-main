@@ -107,38 +107,17 @@
 		-ms-animation: fadeIn 2s forwards;
 	}
 
-#blob {
-    filter: blur(100px); 
-    opacity: 20%; 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    height: 100px;
-    width: 100px;
-    background-color: #ff8bb1;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    transform-origin: 0 0;
-}
-
-#blob::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    background-color: #ff8bb1;
-    border-radius: 50%;
-}
-
-#blob::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50px;
-    width: 100px;
-    height: 100px;
-    background-color: #ff8bb1;
-    border-radius: 50%;
-}
+	#blob {
+		position: fixed;
+		border-radius: 100px;
+		filter: blur(100px);
+		opacity: 20%;
+		top: 0;
+		left: 0;
+		height: 500px;
+		width: 500px;
+		background-color: #ff8bb1;
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
 </style>
