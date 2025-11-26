@@ -15,8 +15,8 @@ export default defineConfig({
 	},
 	site: "https://mintaka.co",
 	i18n: {
-		defaultLocale: "en",
-		locales: ["en", "it"],
+		defaultLocale: "kr",
+		locales: ["en", "kr"],
 	},
 	markdown: {
 		drafts: true,
