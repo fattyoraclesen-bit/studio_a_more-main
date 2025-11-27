@@ -102,7 +102,8 @@ const translatePath = useTranslatedPath(lang);
 			margin-right: 0em;
 		}
 		.suffix {
-			margin-left: 0em;
+			margin-left: -0.2em;
+			transform: translate(-0.35em, 0);
 		}
 	}
 
@@ -121,7 +122,8 @@ const translatePath = useTranslatedPath(lang);
 	.suffix {
 		display: inline-block;
 		transition: transform 0.5s ease;
-		margin-left: -0.4em;
+		margin-left: -0.35em;
+		transform: translate(-1.5em, 0);
 	}
 
 	.heart {
@@ -158,6 +160,11 @@ const translatePath = useTranslatedPath(lang);
 				const words = document.querySelectorAll(".hero .rotator > span");
 				const suffix = document.querySelector(".hero .suffix");
 
+				const isMobile = window.innerWidth < 640;
+				gsap.set(suffix, {
+					x: isMobile ? -0.35 * parseFloat(getComputedStyle(suffix).fontSize) : -2.8 * parseFloat(getComputedStyle(suffix).fontSize),
+				});
+
 				let tl = gsap.timeline({ repeat: -1 });
 				tl.timeScale(0.5);
 
@@ -167,15 +174,19 @@ const translatePath = useTranslatedPath(lang);
 					if (index === 0) {
 						gsap.set(word, { opacity: 1, yPercent: 0 });
 					} else {
-						tl.fromTo(word, { opacity: 0, yPercent: 100 }, { duration: 0.5, opacity: 1, yPercent: 0, ease: "power4.out" }, index);
+						tl.fromTo(word, { opacity: 0, yPercent: 100 }, { duration: 0.8, opacity: 1, yPercent: 0, ease: "power4.out" }, index);
 					}
 
 					// Adjust suffix spacing (A gets closer)
-					const isMobile = window.innerWidth < 640;
 					tl.to(
 						suffix,
 						{
-							x: index === 0 ? (isMobile ? -100 : -190) : 0,
+							x:
+								index === 0
+									? isMobile
+										? -0.35 * parseFloat(getComputedStyle(suffix).fontSize)
+										: -1.5 * parseFloat(getComputedStyle(suffix).fontSize)
+									: 0,
 							duration: 0,
 							ease: "power4.inOut",
 						},

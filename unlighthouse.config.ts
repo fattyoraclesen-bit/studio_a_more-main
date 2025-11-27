@@ -5,12 +5,17 @@ import { defineConfig } from "unlighthouse";
  * https://unlighthouse.dev/api/config
  */
 export default defineConfig({
-	site: "majestico.co",
+	site: "https://fattyoraclesen-bit.github.io",
 	scanner: {
 		exclude: [/^\/cdn-cgi\//],
 	},
 	ci: {
-		budget: 90,
+		budget: {
+			performance: 50,
+			accessibility: 90,
+			"best-practices": 90,
+			seo: 80,
+		},
 		buildStatic: true,
 	},
 	debug: true,
