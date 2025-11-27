@@ -52,6 +52,7 @@
 
 :root {
 	font-family: Pretendard, sans-serif;
+	white-space: pre-line;
 }
 
 @supports (font-variation-settings: normal) {

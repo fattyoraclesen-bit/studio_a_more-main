@@ -24,7 +24,7 @@ export const ui = {
 		"hero.title.3": "ARTS",
 		"hero.title.4": "A to Z",
 		"hero.subtitle":
-			"Our digital agency specializes in crafting captivating websites that convert and sell. Contact us for a free consultation.",
+			"STUDIO A-MORE is a creative studio where cutting-edge AI technology meets refined ARTistic sensibility.<br>Leveraging the expertise of a design agency and AI-driven innovation, we transform ideas into meaningful and tangible value.<br>Beyond design, we support sustainable business growth through comprehensive A-to-Z OEM/ODM services—covering every stage from development to production.<br>Inspired by the Italian word AMORE (love), the name A-MORE reflects our genuine care and thoughtful attention toward clients and end users.<br>Guided by this philosophy, STUDIO A-MORE delivers distinctive, compelling designs and fully realized solutions.",
 		"hero.scroll": "scroll down to explore more",
 		"websites.title": "Websites",
 		"apps.title": "Apps",
@@ -103,7 +103,7 @@ export const ui = {
 		"hero.title.2": "AI",
 		"hero.title.3": "ARTS",
 		"hero.title.4": "A to Z",
-		"hero.subtitle": "우리는 전환과 성장을 중심에 둔 매력적인 웹사이트를 제작하는 디지털 에이전시입니다. 지금 무료 상담을 신청해보세요.",
+		"hero.subtitle": "STUDIO A-MORE는 인공지능(AI)의 최첨단 기술과 예술(ART)적 감각이 조화되는 크리에이티브 스튜디오입니다.<br>우리는 디자인 에이전시로서의 전문성과 AI 기반 혁신을 바탕으로, 고객의 아이디어를 아름답고 현실적인 가치로 확장합니다.<br>나아가 제품 개발부터 생산까지 전 과정(A to Z)을 책임지는 OEM/ODM 서비스를 통해 지속 가능한 비즈니스 성장을 지원합니다.<br>브랜드명 A-MORE는 이탈리아어 AMORE(사랑)에서 유래했으며, 고객과 사용자에 대한 진심 어린 배려와 섬세한 경험을 의미합니다.<br>이러한 철학 아래, STUDIO A-MORE는 가장 독창적이고 매력적인 디자인과 솔루션을 완성합니다.",
 		"hero.scroll": "스크롤하여 더 살펴보기",
 		"websites.title": "웹사이트",
 		"apps.title": "앱",
