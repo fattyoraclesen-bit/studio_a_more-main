@@ -22,7 +22,7 @@ const translatePath = useTranslatedPath(lang);
 							<span>{t("hero.title.4")}</span>
 							<span>{t("hero.title.1")}</span>
 						</span>
-						<span class="suffix">-이<span style="color:#ed145b;">모</span>어</span>
+						<span class="suffix">-이<span class="heart">모</span>어</span>
 					</span>
 				</h1>
 			</div>
@@ -123,6 +123,13 @@ const translatePath = useTranslatedPath(lang);
 		transition: transform 0.5s ease;
 		margin-left: -0.4em;
 	}
+
+	.heart {
+		background: radial-gradient(circle at 10% 20%, rgb(255, 117, 143) 0%, rgba(237, 20, 91, 1) 30%, rgba(219, 33, 70, 1) 90%);
+		-webkit-background-clip: text;
+		color: transparent;
+		transition: background-position 0.1s ease-out;
+	}
 </style>
 
 <script>
@@ -190,4 +197,15 @@ const translatePath = useTranslatedPath(lang);
 
 	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
 	document.addEventListener("DOMContentLoaded", init); // astro:page-load
+
+	document.addEventListener("mousemove", (e) => {
+		const heart = document.querySelector(".heart");
+		if (!heart) return;
+
+		const rect = heart.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
+
+		heart.style.backgroundPosition = `${x * 0.5}px ${y * 0.5}px`;
+	});
 </script>

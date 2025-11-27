@@ -13,7 +13,8 @@ export default defineConfig({
 			},
 		},
 	},
-	site: "https://mintaka.co",
+	site: "https://fattyoraclesen-bit.github.io",
+	base: '/studio_a_more-main',
 	i18n: {
 		defaultLocale: "kr",
 		locales: ["en", "kr"],
