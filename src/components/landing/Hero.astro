@@ -134,12 +134,12 @@ const translatePath = useTranslatedPath(lang);
 
 	@media (max-width: 768px) {
 		.rotator {
-			min-width: 5.5ch;
+			min-width: 5.7ch;
 			margin-right: 0em;
 		}
 		.suffix {
-			margin-left: -0.25em;
-			transform: translate(-1.6em, 0);
+			margin-left: -0.4em;
+			transform: translate(-1.5em, 0);
 		}
 		.heart {
 			background-image: radial-gradient(circle at 10% 10%, rgb(255, 170, 190) 0%, rgb(236, 20, 90) 60%, rgb(180, 10, 50) 100%) !important;
@@ -201,7 +201,7 @@ const translatePath = useTranslatedPath(lang);
 								index === 4 || index === 0
 									? isMobile
 										? suffix
-											? -1.6 * parseFloat(getComputedStyle(suffix).fontSize)
+											? -1.5 * parseFloat(getComputedStyle(suffix).fontSize)
 											: 0
 										: suffix
 											? -1.5 * parseFloat(getComputedStyle(suffix).fontSize)
