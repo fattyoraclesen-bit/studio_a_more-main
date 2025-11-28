@@ -191,14 +191,14 @@ const translatePath = useTranslatedPath(lang);
 					if (index === 0) {
 						gsap.set(word, { opacity: 1, yPercent: 0 });
 					} else {
-						tl.fromTo(word, { opacity: 0, yPercent: 100 }, { duration: 0.8, opacity: 1, yPercent: 0, ease: "power4.out" }, index);
+						tl.fromTo(word, { opacity: 0, yPercent: 100 }, { duration: 0.5, opacity: 1, yPercent: 0, ease: "power4.out" }, index);
 					}
 
 					tl.to(
 						suffix,
 						{
 							x:
-								index === 0
+								index === 4 || index === 0
 									? isMobile
 										? suffix
 											? -1.6 * parseFloat(getComputedStyle(suffix).fontSize)
@@ -208,7 +208,7 @@ const translatePath = useTranslatedPath(lang);
 											: 0
 									: 0,
 							duration: 0,
-							ease: "power4.inOut",
+							ease: "power1.inOut",
 						},
 						index,
 					);
