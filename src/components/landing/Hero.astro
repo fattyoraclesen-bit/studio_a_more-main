@@ -12,7 +12,7 @@ const translatePath = useTranslatedPath(lang);
 		<div class="relative flex flex-1 flex-col justify-around rounded-lg pb-10 pt-20 lg:rounded-2xl">
 			<div class="flex justify-center">
 				<h1 class="text-center font-display text-5xl font-extrabold uppercase sm:text-7xl md:text-8xl lg:text-9xl">
-					<span class="block w-full text-center">{t("hero.title.main")}</span><br />
+					<span class="main-title block w-full text-center">{t("hero.title.main")}</span>
 
 					<span class="mx-auto inline-flex items-center justify-center gap-0 whitespace-nowrap text-center">
 						<span class="rotator relative inline-block h-16 justify-center overflow-hidden sm:h-20 md:h-28 lg:h-32">
@@ -22,12 +22,12 @@ const translatePath = useTranslatedPath(lang);
 							<span>{t("hero.title.4")}</span>
 							<span>{t("hero.title.1")}</span>
 						</span>
-						<span class="suffix">-이<span class="heart">모</span>어</span>
+						<span class="suffix">-이<span style="" class="heart">모</span>어</span>
 					</span>
 				</h1>
 			</div>
 			<div class="flex flex-col items-center gap-5 text-center lg:gap-10">
-				<p class="mt-8 max-w-full font-sans lg:text-lg" set:html={t("hero.subtitle")} />
+				<p class="max-w-full font-sans lg:text-lg" set:html={t("hero.subtitle")} />
 				<div class="flex flex-col items-center justify-center gap-3 lg:col-start-1">
 					<div class="squircle-bg rounded-lg bg-zinc-900" data-cursor-hover data-cursor-parallax>
 						<a
@@ -59,7 +59,6 @@ const translatePath = useTranslatedPath(lang);
 		grid-column: 1 / span 12;
 	}
 
-	/* Hero appearance */
 	.hero h1,
 	.hero h2,
 	.hero h3 {
@@ -82,7 +81,6 @@ const translatePath = useTranslatedPath(lang);
 		display: inline-block;
 	}
 
-	/* Text rotator */
 	.rotator {
 		position: relative;
 		display: inline-flex;
@@ -94,17 +92,6 @@ const translatePath = useTranslatedPath(lang);
 		max-width: 100%;
 		margin-right: -0.25em;
 		margin-left: -0.5em;
-	}
-
-	@media (max-width: 640px) {
-		.rotator {
-			min-width: 5.5ch;
-			margin-right: 0em;
-		}
-		.suffix {
-			margin-left: -0.2em;
-			transform: translate(-0.35em, 0);
-		}
 	}
 
 	.rotator > span {
@@ -127,10 +114,44 @@ const translatePath = useTranslatedPath(lang);
 	}
 
 	.heart {
-		background: radial-gradient(circle at 10% 20%, rgb(255, 117, 143) 0%, rgba(237, 20, 91, 1) 30%, rgba(219, 33, 70, 1) 90%);
+		background-image: linear-gradient(
+			110deg,
+			rgb(236, 20, 90) 10%,
+			rgb(236, 20, 90) 40%,
+			rgb(230, 70, 120) 50%,
+			rgb(236, 20, 90) 60%,
+			rgb(236, 20, 90) 100%
+		);
+		background-size: 300% 300%;
+		background-position: 50% 50%;
+
 		-webkit-background-clip: text;
 		color: transparent;
 		transition: background-position 0.1s ease-out;
+		display: inline-block;
+		-webkit-font-smoothing: antialiased;
+	}
+	.hero :global(br.break-m) {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.rotator {
+			min-width: 5.5ch;
+			margin-right: 0em;
+		}
+		.suffix {
+			margin-left: -0.2em;
+			transform: translate(-0.35em, 0);
+		}
+		.heart {
+			background-image: radial-gradient(circle at 10% 10%, rgb(255, 170, 190) 0%, rgb(236, 20, 90) 60%, rgb(180, 10, 50) 100%) !important;
+			background-size: 100% 100% !important;
+			background-position: 50% 50% !important;
+		}
+		.hero :global(br.break-m) {
+			display: inline;
+		}
 	}
 </style>
 
@@ -143,7 +164,7 @@ const translatePath = useTranslatedPath(lang);
 	gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin);
 
 	function init() {
-		const childSplit = new SplitText(".hero h1", {
+		const childSplit = new SplitText(".hero h1 .main-title", {
 			type: "lines",
 			linesClass: "split-child",
 		});
@@ -161,9 +182,11 @@ const translatePath = useTranslatedPath(lang);
 				const suffix = document.querySelector(".hero .suffix");
 
 				const isMobile = window.innerWidth < 640;
-				gsap.set(suffix, {
-					x: isMobile ? -0.35 * parseFloat(getComputedStyle(suffix).fontSize) : -2.8 * parseFloat(getComputedStyle(suffix).fontSize),
-				});
+				if (suffix) {
+					gsap.set(suffix, {
+						x: isMobile ? -2.8 * parseFloat(getComputedStyle(suffix).fontSize) : -2.8 * parseFloat(getComputedStyle(suffix).fontSize),
+					});
+				}
 
 				let tl = gsap.timeline({ repeat: -1 });
 				tl.timeScale(0.5);
@@ -177,15 +200,18 @@ const translatePath = useTranslatedPath(lang);
 						tl.fromTo(word, { opacity: 0, yPercent: 100 }, { duration: 0.8, opacity: 1, yPercent: 0, ease: "power4.out" }, index);
 					}
 
-					// Adjust suffix spacing (A gets closer)
 					tl.to(
 						suffix,
 						{
 							x:
 								index === 0
 									? isMobile
-										? -0.35 * parseFloat(getComputedStyle(suffix).fontSize)
-										: -1.5 * parseFloat(getComputedStyle(suffix).fontSize)
+										? suffix
+											? -0.01 * parseFloat(getComputedStyle(suffix).fontSize)
+											: 0
+										: suffix
+											? -1.5 * parseFloat(getComputedStyle(suffix).fontSize)
+											: 0
 									: 0,
 							duration: 0,
 							ease: "power4.inOut",
@@ -193,9 +219,8 @@ const translatePath = useTranslatedPath(lang);
 						index,
 					);
 
-					// Word exit
 					if (index !== words.length - 1) {
-						tl.to(word, { duration: 0.6, opacity: 0, yPercent: -100, ease: "power2.inOut" }, index + 0.6);
+						tl.to(word, { duration: 1, opacity: 0, yPercent: -100, ease: "power2.inOut" }, index + 0.6);
 					}
 				});
 			});
@@ -206,17 +231,25 @@ const translatePath = useTranslatedPath(lang);
 		});
 	}
 
-	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
-	document.addEventListener("DOMContentLoaded", init); // astro:page-load
+	document.removeEventListener("DOMContentLoaded", init);
+	document.addEventListener("DOMContentLoaded", init);
 
 	document.addEventListener("mousemove", (e) => {
+		if (window.matchMedia("(max-width: 768px)").matches) return;
+
 		const heart = document.querySelector(".heart");
 		if (!heart) return;
 
 		const rect = heart.getBoundingClientRect();
-		const x = e.clientX - rect.left;
-		const y = e.clientY - rect.top;
+		const centerX = rect.left + rect.width / 2;
+		const centerY = rect.top + rect.height / 2;
 
-		heart.style.backgroundPosition = `${x * 0.5}px ${y * 0.5}px`;
+		const diffX = e.clientX - centerX;
+		const diffY = e.clientY - centerY;
+
+		const xPos = `calc(50% + ${diffX / 10}px)`;
+		const yPos = `calc(50% + ${diffY / 10}px)`;
+
+		(heart as HTMLElement).style.backgroundPosition = `${xPos} ${yPos}`;
 	});
 </script>

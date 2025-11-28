@@ -13,8 +13,7 @@ export default defineConfig({
 			},
 		},
 	},
-	site: "https://fattyoraclesen-bit.github.io",
-	base: '/studio_a_more-main',
+	site: "https://studio-a-more-main.pages.dev",
 	i18n: {
 		defaultLocale: "kr",
 		locales: ["en", "kr"],
