@@ -92,7 +92,7 @@ export const ui = {
 		"hero.title.2": "AI",
 		"hero.title.3": "ARTS",
 		"hero.title.4": "A to Z",
-		"hero.subtitle": "STUDIO A-MORE는 <b>인공지능(AI)</b>의 최첨단 기술과 <b>예술(ART)</b>적 감각이 조화되는 크리에이티브 에이전시입니다.<br><br class='block md:hidden'>우리는 디자인 에이전시로서의 전문성과 AI 기반 혁신을 바탕으로, 고객의 아이디어를 아름답고 현실적인 가치로 확장합니다.<br><br class='block md:hidden'>나아가 제품 개발부터 생산까지 <b>전 과정(A to Z)</b>을 책임지는 OEM/ODM 서비스를 통해 지속 가능한 비즈니스 성장을 지원합니다.<br><br class='block md:hidden'>브랜드명 A-MORE는 이탈리아어 <b>AMORE(사랑)</b>에서 유래했으며, 고객과 사용자에 대한 진심 어린 배려와 섬세한 경험을 의미합니다.<br><br class='block md:hidden'>이러한 철학 아래, STUDIO A-MORE는 가장 독창적이고 매력적인 디자인과 솔루션을 완성합니다.",
+		"hero.subtitle": "스튜디오 에이모어는 <b>인공지능(AI)</b>의 최첨단 기술과 <b>예술(ART)</b>적 감각이 조화되는 크리에이티브 에이전시입니다.<br><br class='block md:hidden'>우리는 디자인 에이전시로서의 전문성과 AI 기반 혁신을 바탕으로, 고객의 아이디어를 아름답고 현실적인 가치로 확장합니다.<br><br class='block md:hidden'>나아가 제품 개발부터 생산까지 <b>전 과정(A to Z)</b>을 책임지는 OEM/ODM 서비스를 통해 지속 가능한 비즈니스 성장을 지원합니다.<br><br class='block md:hidden'>브랜드명 A-MORE는 이탈리아어 <b>AMORE(사랑)</b>에서 유래했으며, 고객과 사용자에 대한 진심 어린 배려와 섬세한 경험을 의미합니다.<br><br class='block md:hidden'>이러한 철학 아래, STUDIO A-MORE는 가장 독창적이고 매력적인 디자인과 솔루션을 완성합니다.",
 		"hero.scroll": "스크롤하여 더 살펴보기",
 		"websites.title": "Websites",
 		"apps.title": "Apps",
