@@ -6,9 +6,6 @@ on:
         branches:
             - main
 
-env:
-    PRIVJS_TOKEN: ${{ secrets.PRIVJS_TOKEN }}
-
 jobs:
     test-and-deploy:
         runs-on: ubuntu-latest
@@ -24,13 +21,7 @@ jobs:
               run: bun install
 
             - name: Install Global dependencies
-              run: bun install -g netlify-cli @unlighthouse/cli puppeteer
+              run: bun install -g @unlighthouse/cli puppeteer
 
             - name: Unlighthouse assertions and client
               run: unlighthouse-ci
-
-            - name: Deploy
-              run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions"
-              env:
-                  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-                  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
