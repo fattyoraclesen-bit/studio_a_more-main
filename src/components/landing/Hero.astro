@@ -114,16 +114,9 @@ const translatePath = useTranslatedPath(lang);
 	}
 
 	.heart {
-		background-image: radial-gradient(
-			circle at 10% 10%,
-			rgb(236, 20, 90) 10%,
-			rgb(236, 20, 90) 35%,
-			rgb(255, 105, 140) 50%,
-			rgb(236, 20, 90) 65%,
-			rgb(236, 20, 90) 100%
-		);
+		background-image: radial-gradient(circle, rgb(255, 105, 140) 0%, rgb(236, 20, 90) 30%, rgb(236, 20, 90) 100%);
 		background-size: 300% 300%;
-		background-position: 50% 50%;
+		background-position: 0% 0%;
 
 		-webkit-background-clip: text;
 		color: transparent;
@@ -228,10 +221,20 @@ const translatePath = useTranslatedPath(lang);
 	document.removeEventListener("DOMContentLoaded", init);
 	document.addEventListener("DOMContentLoaded", init);
 
+	// Smooth heart gradient movement
+	const heart = document.querySelector(".heart");
+
+	let targetX = 50;
+	let targetY = 50;
+	let currentX = 50;
+	let currentY = 50;
+
+	function lerp(start, end, t) {
+		return start + (end - start) * t;
+	}
+
 	document.addEventListener("mousemove", (e) => {
 		if (window.matchMedia("(max-width: 768px)").matches) return;
-
-		const heart = document.querySelector(".heart");
 		if (!heart) return;
 
 		const rect = heart.getBoundingClientRect();
@@ -241,9 +244,20 @@ const translatePath = useTranslatedPath(lang);
 		const diffX = e.clientX - centerX;
 		const diffY = e.clientY - centerY;
 
-		const xPos = `calc(50% + ${diffX / 10}px)`;
-		const yPos = `calc(50% + ${diffY / 10}px)`;
-
-		(heart as HTMLElement).style.backgroundPosition = `${xPos} ${yPos}`;
+		targetX = 50 + diffX * 0.1;
+		targetY = 50 + diffY * 0.1;
 	});
+
+	function animateHeart() {
+		currentX = lerp(currentX, targetX, 0.1);
+		currentY = lerp(currentY, targetY, 0.1);
+
+		if (heart) {
+			heart.style.backgroundPosition = `${currentX}% ${currentY}%`;
+		}
+
+		requestAnimationFrame(animateHeart);
+	}
+
+	animateHeart();
 </script>
